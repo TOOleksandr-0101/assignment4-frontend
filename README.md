@@ -1,7 +1,7 @@
 # Assignment #4: Forms and Validation
 
 **Student:** Oleksandr  
-**Group:** (Your group)  
+**Group:** SE-2528
 
 The goal of this assignment is to understand how to create user-friendly forms with HTML, style them using Bootstrap form components, and apply form validation (both HTML5 built-in validation and Bootstrap validation classes).
 
