@@ -32,8 +32,33 @@
     </nav>
 
     <main class="container my-5">
-        <h1>Part 1: Basic HTML Forms</h1>
-        <p class="text-muted">Task 0 (Simple Contact Form) and Task 1 (HTML5 Validation) will be implemented here.</p>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="custom-card">
+                    <h2 class="mb-3">Contact Us</h2>
+                    <p class="text-muted mb-4">Basic HTML Form + HTML5 Validation</p>
+
+                    <form action="#" method="post">
+                        <div class="mb-3">
+                            <label for="userName" class="form-label fw-bold">Name:</label>
+                            <input type="text" id="userName" name="userName" class="form-control" placeholder="Enter your name" required minlength="2">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="userEmail" class="form-label fw-bold">Email:</label>
+                            <input type="email" id="userEmail" name="userEmail" class="form-control" placeholder="name@example.com" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="userMessage" class="form-label fw-bold">Message:</label>
+                            <textarea id="userMessage" name="userMessage" class="form-control" rows="4" placeholder="Write your message here..." required maxlength="300"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-dark w-100">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </main>
 
     <footer class="bg-dark text-white text-center py-3 mt-auto">
