@@ -32,8 +32,109 @@
     </nav>
 
     <main class="container my-5">
-        <h1>Part 3: Advanced Form Project</h1>
-        <p class="text-muted">Task 4 (Comprehensive Registration Form with Bootstrap Grid and Validation) will be implemented here.</p>
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="custom-card">
+                    <h2 class="mb-3">Create an Account</h2>
+                    <p class="text-muted mb-4">Task 4: Responsive Registration Form with Bootstrap Grid and Validation</p>
+
+                    <form class="needs-validation" novalidate id="registerForm">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="regFirstName" class="form-label">First Name</label>
+                                <input type="text" class="form-control" id="regFirstName" placeholder="Alex" required minlength="2">
+                                <div class="valid-feedback">Looks good!</div>
+                                <div class="invalid-feedback">First name must be at least 2 characters.</div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="regLastName" class="form-label">Last Name</label>
+                                <input type="text" class="form-control" id="regLastName" placeholder="Kim" required minlength="2">
+                                <div class="valid-feedback">Looks good!</div>
+                                <div class="invalid-feedback">Last name must be at least 2 characters.</div>
+                            </div>
+
+                            <div class="col-12">
+                                <label for="regEmail" class="form-label">Email Address</label>
+                                <input type="email" class="form-control" id="regEmail" placeholder="alex.kim@example.com" required>
+                                <div class="valid-feedback">Looks good!</div>
+                                <div class="invalid-feedback">Please enter a valid email.</div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="regPassword" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="regPassword" placeholder="Minimum 6 characters" required minlength="6">
+                                <div class="valid-feedback">Strong password!</div>
+                                <div class="invalid-feedback">Password must be at least 6 characters.</div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="regConfirmPassword" class="form-label">Confirm Password</label>
+                                <input type="password" class="form-control" id="regConfirmPassword" placeholder="Repeat your password" required>
+                                <div class="valid-feedback">Passwords match!</div>
+                                <div class="invalid-feedback" id="confirmFeedback">Please confirm your password.</div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label d-block">Gender</label>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="gender" id="genderMale" value="male" required>
+                                    <label class="form-check-label" for="genderMale">Male</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="gender" id="genderFemale" value="female">
+                                    <label class="form-check-label" for="genderFemale">Female</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="gender" id="genderOther" value="other">
+                                    <label class="form-check-label" for="genderOther">Other</label>
+                                </div>
+                                <div class="invalid-feedback">Please select your gender.</div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="regCountry" class="form-label">Country</label>
+                                <select class="form-select" id="regCountry" required>
+                                    <option value="" selected disabled>Select your country...</option>
+                                    <option value="KZ">Kazakhstan</option>
+                                    <option value="US">United States</option>
+                                    <option value="UK">United Kingdom</option>
+                                    <option value="DE">Germany</option>
+                                    <option value="OTHER">Other</option>
+                                </select>
+                                <div class="valid-feedback">Looks good!</div>
+                                <div class="invalid-feedback">Please select a country.</div>
+                            </div>
+
+                            <div class="col-12">
+                                <label class="form-label d-block">Hobbies</label>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="hobbySports" value="sports">
+                                    <label class="form-check-label" for="hobbySports">Sports</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="hobbyMusic" value="music">
+                                    <label class="form-check-label" for="hobbyMusic">Music</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="hobbyReading" value="reading">
+                                    <label class="form-check-label" for="hobbyReading">Reading</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="hobbyGaming" value="gaming">
+                                    <label class="form-check-label" for="hobbyGaming">Gaming</label>
+                                </div>
+                            </div>
+
+                            <div class="col-12 mt-4 d-flex gap-2">
+                                <button type="submit" class="btn btn-primary px-4">Register</button>
+                                <button type="reset" class="btn btn-outline-secondary px-4">Reset</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </main>
 
     <footer class="bg-dark text-white text-center py-3 mt-auto">
@@ -41,5 +142,32 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const registerForm = document.getElementById('registerForm');
+        const passwordInput = document.getElementById('regPassword');
+        const confirmPasswordInput = document.getElementById('regConfirmPassword');
+        const confirmFeedback = document.getElementById('confirmFeedback');
+
+        registerForm.addEventListener('submit', function (event) {
+            if (passwordInput.value !== confirmPasswordInput.value) {
+                confirmPasswordInput.setCustomValidity('Passwords do not match');
+                confirmFeedback.textContent = 'Passwords do not match.';
+            } else {
+                confirmPasswordInput.setCustomValidity('');
+            }
+
+            if (!registerForm.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+
+            registerForm.classList.add('was-validated');
+        });
+
+        registerForm.addEventListener('reset', function () {
+            registerForm.classList.remove('was-validated');
+            confirmPasswordInput.setCustomValidity('');
+        });
+    </script>
 </body>
 </html>
